@@ -3,7 +3,7 @@
 ## IconTexture: Interface\Icons\Spell_Shadow_DeathScream
 ## Notes: Plays a random sound when your Undead paladin or priest successfully casts a known Holy spell.
 ## Author: UndeadHolyOof
-## Version: 1.4.0
+## Version: 1.4.1
 ## SavedVariables: UndeadHolyOofDB
 
 HolySpells.lua
