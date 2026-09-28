@@ -1,4 +1,4 @@
-# Undead Holy Oof
+# UndeadHolyOof
 
 ### Casting a Holy spell hurts undead casters in Warcraft lore, so why not be fully immersed!
 
