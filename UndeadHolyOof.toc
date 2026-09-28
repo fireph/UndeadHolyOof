@@ -3,7 +3,7 @@
 ## IconTexture: Interface\Icons\Spell_Shadow_DeathScream
 ## Notes: Plays a pain sound every time you cast a Holy spell as an Undead Paladin or Priest
 ## Author: dungfu/fireph
-## Version: 1.4.2
+## Version: 1.4.3
 ## SavedVariables: UndeadHolyOofDB
 
 HolySpells.lua
