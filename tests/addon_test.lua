@@ -201,4 +201,49 @@ assert(addon.GetVolume() == 50, "Invalid choice must be ignored")
 UndeadHolyOofDB.volume = "invalid"
 reload()
 assert(addon.GetVolume() == 100, "Invalid saved volume must default to 100")
-output("PASS: exact 1%/11% marginal probabilities, all no-repeat transitions, volume, mute, persistence, assets, filtering, controls")
+-- Forever-specific class spells found in the 2026-09-28 database audit.
+local addedSpells = {
+    PALADIN = { 678, 1319259, 1311606, 1310911, 458856, 1311649, 407798,
+        20218, 19977, 25890, 412019, 440658, 407632, 1219206, 462853,
+        407788, 407804, 1310897, 1311015, 13819, 23214, 1296534, 461607 },
+    PRIEST = { 401937, 402174, 401859, 401946, 27683, 402004, 425207, 425284 },
+}
+for playerClass, ids in pairs(addedSpells) do
+    class = playerClass
+    for _, id in ipairs(ids) do
+        local before = #sounds
+        cast("player", "audited-" .. id, id)
+        count(before + 1)
+    end
+end
+-- Higher ranks and replacement casts still work on a localized client.
+local rankPairs = {
+    { "PRIEST", 401937, 1240774, "Localized Binding Heal" },
+    { "PRIEST", 401859, 1240827, "Localized Prayer of Mending" },
+    { "PRIEST", 402174, 1316995, "Localized Penance" },
+    { "PALADIN", 1310911, 1311595, "Localized Light's Vigil" },
+    { "PALADIN", 1311649, 1311656, "Localized Seal of Fury" },
+    { "PALADIN", 13819, 1279399, "Localized Summon Warhorse" },
+}
+for _, pair in ipairs(rankPairs) do names[pair[2]], names[pair[3]] = pair[4], pair[4] end
+names[1319259], names[407676] = "Localized Crusader Strike", "Localized Crusader Strike"
+reload()
+for _, pair in ipairs(rankPairs) do
+    class = pair[1]
+    local before = #sounds
+    cast("player", "rank-" .. pair[3], pair[3])
+    count(before + 1)
+end
+local excludedSpells = {
+    PALADIN = { 2878, 20911, 25899, 407676, 407784, 440677, 20183, 407803, 407774 },
+    PRIEST = { 19236, 14751, 1309957, 1277331, 1277370, 1277455, 1277462, 2651 },
+}
+for playerClass, ids in pairs(excludedSpells) do
+    class = playerClass
+    for _, id in ipairs(ids) do
+        local before = #sounds
+        cast("player", "excluded-" .. id, id)
+        count(before)
+    end
+end
+output("PASS: audited Holy spell coverage and ranks, school exclusions, exact 1%/11% probabilities, no repeats, volume, filtering, controls")

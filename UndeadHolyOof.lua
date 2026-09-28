@@ -49,7 +49,9 @@ local function BuildSpellLookup()
         for _, spellID in ipairs(ids) do
             holyIDs[class][spellID] = true
             local name = SpellName(spellID)
-            if name then holyNames[class][name] = true end
+            if name and not addon.exactOnlySpellIDs[spellID] then
+                holyNames[class][name] = true
+            end
         end
     end
 end
