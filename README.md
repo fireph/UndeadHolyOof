@@ -1,6 +1,6 @@
 # Undead Holy Oof
 
-### Casting a Holy spell hurts undead casters in the WoW lore, so why not be fully immersed!
+### Casting a Holy spell hurts undead casters in Warcraft lore, so why not be fully immersed!
 
 This addon plays a pain sound every time you cast a Holy spell as an Undead Paladin or Priest.
 
